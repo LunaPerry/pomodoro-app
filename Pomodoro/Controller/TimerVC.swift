@@ -129,7 +129,7 @@ class TimerVC: UIViewController {
     }
     
     @objc func resetButtonPressed(_ sender: UIButton) {
-        if timer.isValid { 
+        if timer.isValid {
             timer.invalidate()
         }
         resetAll()
@@ -164,8 +164,8 @@ class TimerVC: UIViewController {
     }
     
     func startTimer() {
-        //TODO: create the timer, the action called should be runTimer()
-        
+        //Creates the timer with action runTimer
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
     }
     
     @objc func runTimer() {
