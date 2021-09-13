@@ -93,23 +93,32 @@ class TimerVC: UIViewController {
     @objc func startPauseButtonPressed(_ sender: UIButton) {
         if timer.isValid {
          // Timer running
-         // TODO: Change the button’s title to “Continue”
-         // TODO: Enable the reset button
-         // TODO: Pause the timer, call the method pauseTimer
+         // Changes the button’s title to “Continue!”
+            sender.setTitle("Continue!", for: .normal)
+         // Enables the reset button
+            resetButton.isEnabled = true
+         // Pauses the timer using pauseTimer()
+            pauseTimer()
             
            
         } else {
          // Timer stopped or hasn't started
-         // TODO: Change the button’s title to “Pause”
-         // TODO: Disable the Reset button
+         // Changes the button’s title to “Pause!”
+            sender.setTitle("Pause!", for: .normal)
+         // Disables the Reset button
+            resetButton.isEnabled = false
             
             if currentInterval == 0 && timeRemaining == pomodoroDuration {
-                // We are at the start of a cycle
-                // TODO: begin the cycle of intervals
+                // Starting of a cycle
+                // Starts cycle of intervals
+                currentInterval = 1
+                
+                startTimer()
                 
             } else {
-                // We are in the middle of a cycle
-                // TODO: Resume the timer.
+                // In the middle of a cycle
+                // Resumes the timer
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
                 
             }
         }
