@@ -118,6 +118,7 @@ class TimerVC: UIViewController {
             } else {
                 // In the middle of a cycle
                 // Resumes the timer
+                currentInterval += 1
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
                 
             }
@@ -212,7 +213,8 @@ class TimerVC: UIViewController {
             currentInterval += 1
         } else {
             // If all intervals are complete, reset all.
-            // TODO: Post Notification
+            // Post Notification
+            NotificationCenter.default.post(Notification(name: Notification.Name("FinishedCycle")))
             resetAll()
         }
     }
