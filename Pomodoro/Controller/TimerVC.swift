@@ -80,7 +80,10 @@ class TimerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        //TODO: Set button actions for startPauseButton, resetButton and closeButton
+        //Set up button actions for startPauseButton, resetButton and closeButton
+        resetButton.addTarget(self, action: #selector(resetButtonPressed(_:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonPressed(_:)), for: .touchUpInside)
+        startPauseButton.addTarget(self, action: #selector(startPauseButtonPressed(_:)), for: .touchUpInside)
         
         resetAll()
     }
@@ -110,6 +113,10 @@ class TimerVC: UIViewController {
                 
             }
         }
+    }
+    
+    @objc func closeButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func resetButtonPressed(_ sender: UIButton) {
