@@ -57,8 +57,11 @@ class HomeVC: UIViewController {
     //MARK: Notifications
 
     @objc func receivedNotification(_ notification:Notification) {
-        // TODO: Update value of completed cycles
-        // TODO: Update message label
+        // Updates complete cycles
+        completedCycles += 1
+        
+        // Updates messageLabel
+        messageLabel.text = "You have completed \(completedCycles) cycles!"
     }
     
     //MARK: Navigation
