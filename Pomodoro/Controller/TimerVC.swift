@@ -129,10 +129,10 @@ class TimerVC: UIViewController {
     }
     
     @objc func resetButtonPressed(_ sender: UIButton) {
-        if timer.isValid {
+        if timer.isValid { 
             timer.invalidate()
         }
-        //TODO: call the reset method
+        resetAll()
     }
 
     // MARK: Create UI
